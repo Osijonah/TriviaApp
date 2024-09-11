@@ -1,0 +1,48 @@
+body{
+    margin: 0 auto;
+    max-height: 100vh;
+}
+header{
+    border: 1px solid red;
+    border-bottom: 1px solid #f7f7f7;
+    padding: 0 5px;
+    /* margin-bottom: 30px; */
+}
+.header-size{
+    font-size: 30px;
+}
+figure{
+    text-align: center;
+}
+img{
+    height: 45vh;
+}
+.text{
+    text-align: center;
+}
+.text h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    margin-bottom: 30px;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+button{
+    background-color: #00973f;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 9px 22px;
+    outline: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+@media screen and (min-device-width: 320px) {
+    
+}
