@@ -1,9 +1,9 @@
 body{
+    background-color: #ffffff;
     margin: 0 auto;
     max-height: 100vh;
 }
 header{
-    border: 1px solid red;
     border-bottom: 1px solid #f7f7f7;
     padding: 0 5px;
     /* margin-bottom: 30px; */
@@ -30,19 +30,46 @@ p{
     font-size: 20px;
     margin-bottom: 30px;
 }
-button{
+.btn{
     background-color: #00973f;
     border: none;
     border-radius: 4px;
     color: white;
+    cursor: pointer;
     padding: 9px 22px;
     outline: none;
+    text-decoration: none;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
 }
 
+.question-text{
+    margin-top: 20vh;
+    }
+.answer-btns{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    width: 250px;
+}
+.false-btn, .true-btn{
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 5px 7px 3px #fafafa;
+    cursor: pointer;
+    padding: 9px 18px;
+    outline: none;
+    text-decoration: none;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+}
 @media screen and (min-device-width: 320px) {
     
 }
