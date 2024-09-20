@@ -73,6 +73,15 @@ p{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+
+.true-picked{
+    border: 2px solid #6fe99a;
+    color: #00973f;
+}
+.false-picked{
+    border: 2px solid #e96fac;
+    color: #ec1b1b;
+}
 @media screen and (min-device-width: 320px) {
     
 }
