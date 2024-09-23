@@ -7,9 +7,10 @@ body{
     display: none;
 }
 header{
+    background-color: #ffffff;
     border-bottom: 1px solid #f7f7f7;
+    margin-bottom: 30px;
     padding: 0 5px;
-    /* margin-bottom: 30px; */
 }
 .header-size{
     font-size: 30px;
@@ -81,6 +82,28 @@ p{
 .false-picked{
     border: 2px solid #e96fac;
     color: #ec1b1b;
+}
+
+.flex-col {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 1700px;
+    justify-content: space-between;
+    margin: 30px auto;
+    width: 30vw;
+}
+
+.correct-ans {
+    border: 2px solid #6fe99a;
+}
+.false-ans {
+    border: 2px solid #e96fac;
+}
+.position-fixed{
+    position: fixed;
+    top: 0;
+    scroll-margin-top: 5rem;
+    /* z-index: 10; */
 }
 @media screen and (min-device-width: 320px) {
     
