@@ -107,15 +107,21 @@ let quizScore = 0;
 // index of current question
 let questionNum = 1;
 
+// function to remove special character
+
+const pureString = ( str ) => {
+    return str.replaceAll(`&quot;`, `"`).replaceAll(`&#039;`, `'`).replaceAll(`&rdquo;`, `"`).replaceAll(`&ldquo;`, `"`);
+}
+// &quot;    ,  &#039;     ,&rdquo;     &ldquo;
 
 // Fill quiz page content
 
 function populateQuiz (obj) {
     const results = obj.results;
 
-
     questionTitleParagraph.textContent = `${questionNum} of ${results.length} (${results[questionNum-1].category})`;
-    questionParagraph.textContent = results[questionNum-1].question;
+
+    questionParagraph.textContent = pureString(results[questionNum - 1].question);
     
     
     questionDiv.appendChild(questionTitleParagraph)
@@ -162,7 +168,7 @@ function populateQuiz (obj) {
     // function to record result for each question
     
     const recordResult = (obj) => {
-        obj.question = results[questionNum-1].question;
+        obj.question = pureString(results[questionNum - 1].question);
         obj.option = optionClicked();
         
         quizResult.push(obj);
@@ -181,7 +187,7 @@ function populateQuiz (obj) {
                 if (btnClicked === true) {
                     questionNum++;
                     questionTitleParagraph.textContent = `${questionNum} of ${results.length} (${results[questionNum-1].category})`;
-                    questionParagraph.textContent = results[questionNum-1].question;
+                    questionParagraph.textContent = pureString(results[questionNum - 1].question);
                     
                     btnClicked = false;
                     if (questionNum===results.length) {
@@ -207,16 +213,16 @@ function populateQuiz (obj) {
                                     optionPara.classList.add(`option-para`);
                                     eachResultDiv.classList.add(`result-div`);
                                     questionPara.textContent = obj.question;
-                                    optionPara.textContent = `Your Answer: ${obj.option}`
+                                    optionPara.textContent = `Your Answer: ${obj.option} `
         
                                     if ( obj.option === results[questionNum].correct_answer.toLowerCase() ) {
-                                        optionPara.textContent += ` ✔`;
+                                        optionPara.innerHTML += ` <svg class="checkmark" viewBox="0 -3 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#00973f" stroke="#00973f"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>checkmark</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-518.000000, -1039.000000)" fill="#00973f"> <path d="M548.783,1040.2 C547.188,1038.57 544.603,1038.57 543.008,1040.2 L528.569,1054.92 L524.96,1051.24 C523.365,1049.62 520.779,1049.62 519.185,1051.24 C517.59,1052.87 517.59,1055.51 519.185,1057.13 L525.682,1063.76 C527.277,1065.39 529.862,1065.39 531.457,1063.76 L548.783,1046.09 C550.378,1044.46 550.378,1041.82 548.783,1040.2" id="checkmark" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>`;
                                         eachResultDiv.classList.add(`correct-ans`);
         
                                         quizScore++;
                                     }
                                     else if ( obj.option !== results[questionNum].correct_answer.toLowerCase() ) {
-                                        optionPara.textContent = optionPara.textContent += ` ❌`;
+                                        optionPara.innerHTML += ` <svg class="wrong" fill="#b71c1c" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z"></path></g></svg>`;
                                         eachResultDiv.classList.add(`false-ans`);
                                     }
                                     
@@ -253,7 +259,7 @@ function populateQuiz (obj) {
                                 resultPageDiv.classList.add(`no-display`);
                                 textDiv.classList.remove(`no-display`);
                                 figure.classList.remove(`no-display`);
-
+                                location.reload();
                                 
                             })
                         })

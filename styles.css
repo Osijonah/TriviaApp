@@ -218,9 +218,12 @@ h6{
 }
 
 .checkmark{
-    width: 12px;
+    margin-bottom: -2px;
+    margin-left: 2px;
+    width: 10px;
 }
 .wrong{
+    margin-bottom: -2px;
     width: 15px;
 }
 .upload{
@@ -272,6 +275,9 @@ h6{
     margin-top: 0;
 }
 .option-para{
+    display: flex;
+    align-items: center;
+    gap: 3px;
     margin-top: 0;
 }
 .correct-ans {
@@ -299,6 +305,12 @@ h6{
     margin-top: 15px;
     margin-bottom: 5px;
 }
-@media screen and (min-device-width: 320px) {
+
+@media screen and (min-device-width: 601px) {
+    
+}
+
+/* Desktop Screen */
+@media screen and (min-device-width: 1280px) {
     
 }
