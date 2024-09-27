@@ -1,7 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+.roboto-thin {
+    font-family: "Roboto", system-ui;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .roboto-light {
+    font-family: "Roboto", system-ui;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .roboto-regular {
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", system-ui;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .roboto-bold {
+    font-family: "Roboto", system-ui;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .roboto-black {
+    font-family: "Roboto", system-ui;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .roboto-thin-italic {
+    font-family: "Roboto", system-ui;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .roboto-light-italic {
+    font-family: "Roboto", system-ui;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .roboto-regular-italic {
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .roboto-medium-italic {
+    font-family: "Roboto", system-ui;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .roboto-bold-italic {
+    font-family: "Roboto", system-ui;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .roboto-black-italic {
+    font-family: "Roboto", system-ui;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+
+
 body{
     background-color: #ffffff;
     margin: 0 auto;
     max-height: 100vh;
+    font-family: "Roboto",Helvetica, Arial, sans-serif;
 }
 .no-display{
     display: none;
@@ -9,38 +87,69 @@ body{
 header{
     background-color: #ffffff;
     border-bottom: 1px solid #f7f7f7;
-    margin-bottom: 30px;
-    padding: 0 5px;
+    padding: 10px 5px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+h4{
+    font-weight: 400;
 }
 .header-size{
+    color: #000000;
     font-size: 30px;
+    margin: 0;
 }
 figure{
+    margin-bottom: 50px;
     text-align: center;
 }
+
+main{
+    margin-top: 100px;
+}
+
 img{
-    height: 45vh;
+    height: 35vh;
 }
 .text{
     text-align: center;
 }
-.text h1{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 34px;
-    margin-bottom: 30px;
+.text h4{
+    font-size: 30px;
+    margin-bottom: 50px;
 }
-p{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    margin-bottom: 30px;
+h6{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 50px;
 }
+
+.sec-h6{
+    margin-bottom: 50px;
+}
+
+.btn-div{
+    box-sizing: border-box;
+    height: 40px;
+    padding: 3px;
+
+}
+
 .btn{
     background-color: #00973f;
     border: none;
     border-radius: 4px;
     color: white;
     cursor: pointer;
-    padding: 9px 22px;
+    font-size: 13px;
+    font-weight: 400;
+    height: 30px;
+    width: 90px;
+    padding: 9px 18px;
+    margin-top: 50px;
     outline: none;
     text-decoration: none;
     -webkit-border-radius: 4px;
@@ -49,24 +158,45 @@ p{
     -o-border-radius: 4px;
 }
 
+
+
 .question-text{
-    margin-top: 20vh;
+    margin: 15vh auto;
+    text-align: center;
+    width: 450px;
     }
+
+.question-title{
+    color: #344356;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 120px;
+}
+.question{
+    color: #000000;
+    font-size: 20px;
+    margin: 5px auto 10px auto;
+}
 .answer-btns{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    width: 250px;
+    margin: 20px auto;
+    margin-bottom: 20px;
+    width: 230px;
 }
 .false-btn, .true-btn{
     background-color: white;
-    border: none;
+    border: 1px solid #fff;
     border-radius: 10px;
-    box-shadow: 1px 5px 7px 3px #fafafa;
+    box-shadow: rgba(60, 128, 209, 0.09) 0px 12px 19px;
+    box-sizing: border-box;
     cursor: pointer;
-    padding: 9px 18px;
+    height: 50px;
+    width: 90px;
+    font: 15px "Roboto", sans-serif;
+    padding: 15px 5px;
     outline: none;
     text-decoration: none;
     -webkit-border-radius: 10px;
@@ -74,6 +204,35 @@ p{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+
+.cont-btn-div{
+    display: flex;
+    font-size: 12px;
+    height: 15px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+}
+
+.checkmark{
+    width: 12px;
+}
+.wrong{
+    width: 15px;
+}
+.upload{
+    width: 15px;
+}
+.right-arrow{
+    width: 16px;
+}
+.reload{
+    width: 15px;
+}
+
 
 .true-picked{
     border: 2px solid #6fe99a;
@@ -84,26 +243,61 @@ p{
     color: #ec1b1b;
 }
 
+.result-page {
+    margin-top: -30px;
+    padding-bottom: 1px;
+}
+.score-para{
+    font: 400 19px "Roboto";
+    margin-top: 15px;
+}
+
 .flex-col {
     display: flex;
     flex-flow: column nowrap;
-    height: 1700px;
+    min-height: 100vh;
     justify-content: space-between;
-    margin: 30px auto;
-    width: 30vw;
+    gap: 15px;
+    margin: 0 auto;
+    margin-top: -15px;
+    width: 500px;
 }
 
+.result-div{
+    box-shadow: rgba(60, 128, 209, 0.09) 0px 12px 19px;
+    padding: 16px;
+}
+.question-para{
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.option-para{
+    margin-top: 0;
+}
 .correct-ans {
-    border: 2px solid #6fe99a;
+    border: 3px solid rgba(0, 151, 63, 0.3);;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 .false-ans {
-    border: 2px solid #e96fac;
+    border: 3px solid #eea4c9;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
-.position-fixed{
-    position: fixed;
-    top: 0;
-    scroll-margin-top: 5rem;
-    /* z-index: 10; */
+
+.hidden-para{
+    color: red;
+    font-size: 16px;
+}
+.try-again{
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 @media screen and (min-device-width: 320px) {
     
