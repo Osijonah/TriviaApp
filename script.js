@@ -73,7 +73,7 @@ trueBtn.innerHTML = `<svg class="checkmark" viewBox="0 -3 32 32" version="1.1" x
 
 falseBtn.innerHTML = `<svg class="wrong" fill="#b71c1c" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z"></path></g></svg>`;
 
-trueBtn.append(` Text`);
+trueBtn.append(` True`);
 falseBtn.append(` False`);
 contBtn.textContent = `CONTINUE`;
 
@@ -110,16 +110,15 @@ let questionNum = 1;
 // function to remove special character
 
 const pureString = ( str ) => {
-    return str.replaceAll(`&quot;`, `"`).replaceAll(`&#039;`, `'`).replaceAll(`&rdquo;`, `"`).replaceAll(`&ldquo;`, `"`);
+    return str.replaceAll(`&quot;`, `"`).replaceAll(`&#039;`, `'`).replaceAll(`&rdquo;`, `"`).replaceAll(`&ldquo;`, `"`).replaceAll(` &amp;`, `:`);
 }
-// &quot;    ,  &#039;     ,&rdquo;     &ldquo;
 
 // Fill quiz page content
 
 function populateQuiz (obj) {
     const results = obj.results;
 
-    questionTitleParagraph.textContent = `${questionNum} of ${results.length} (${results[questionNum-1].category})`;
+    questionTitleParagraph.textContent = `${questionNum} of ${results.length} (${pureString(results[questionNum-1].category)})`;
 
     questionParagraph.textContent = pureString(results[questionNum - 1].question);
     
@@ -157,10 +156,10 @@ function populateQuiz (obj) {
 
     const optionClicked = () => {
         if ( trueBtn.classList.contains(`true-picked`)) {
-            return `true`;
+            return `True`;
         }
         if ( falseBtn.classList.contains(`false-picked`)) {
-            return `false`;
+            return `False`;
         }
     }
     
@@ -178,7 +177,10 @@ function populateQuiz (obj) {
     
     // continue button functionality
     
-    contBtnDiv.addEventListener(`click`, (()=>{        
+    contBtnDiv.addEventListener(`click`, (( e )=>{
+        console.log(e.target);
+        
+
         if ( btnClicked === true) {
             recordResult({});
             trueBtn.classList.remove(`true-picked`);
@@ -186,7 +188,7 @@ function populateQuiz (obj) {
             if (questionNum<results.length) {
                 if (btnClicked === true) {
                     questionNum++;
-                    questionTitleParagraph.textContent = `${questionNum} of ${results.length} (${results[questionNum-1].category})`;
+                    questionTitleParagraph.textContent = `${questionNum} of ${results.length} (${pureString(results[questionNum-1].category)})`;
                     questionParagraph.textContent = pureString(results[questionNum - 1].question);
                     
                     btnClicked = false;
@@ -196,13 +198,17 @@ function populateQuiz (obj) {
                         contBtnIcon.innerHTML = `<svg class="upload" height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#ffffffffffff;" d="M381.06,130.935l-108.598-108.6c-0.545-0.545-1.117-1.058-1.713-1.547 c-0.259-0.213-0.538-0.402-0.807-0.604c-0.34-0.254-0.673-0.517-1.021-0.751c-0.326-0.217-0.669-0.408-1.004-0.61 c-0.315-0.189-0.625-0.388-0.948-0.56c-0.343-0.183-0.698-0.34-1.052-0.507c-0.337-0.158-0.67-0.327-1.01-0.469 c-0.341-0.141-0.694-0.256-1.043-0.382c-0.369-0.133-0.735-0.275-1.109-0.388c-0.346-0.106-0.703-0.183-1.057-0.272 c-0.383-0.096-0.763-0.203-1.15-0.281c-0.41-0.082-0.83-0.132-1.246-0.191c-0.337-0.048-0.669-0.112-1.005-0.146 c-0.756-0.073-1.522-0.115-2.298-0.115c-0.776,0-1.542,0.042-2.299,0.116c-0.327,0.033-0.653,0.095-0.981,0.141 c-0.425,0.061-0.853,0.112-1.271,0.194c-0.375,0.074-0.745,0.18-1.117,0.273c-0.365,0.092-0.735,0.172-1.092,0.281 c-0.362,0.11-0.717,0.248-1.072,0.375c-0.36,0.129-0.726,0.248-1.075,0.394c-0.33,0.137-0.652,0.301-0.977,0.453 c-0.365,0.172-0.734,0.335-1.088,0.524c-0.306,0.163-0.602,0.355-0.901,0.534c-0.354,0.209-0.711,0.411-1.052,0.638 c-0.324,0.219-0.636,0.465-0.954,0.703c-0.292,0.217-0.591,0.422-0.874,0.652c-0.557,0.458-1.098,0.948-1.621,1.466 c-0.028,0.025-0.054,0.047-0.081,0.071L130.935,130.934c-9.087,9.089-9.089,23.824,0,32.912c9.087,9.089,23.824,9.087,32.912,0.002 l68.88-68.876v285.147c0,12.853,10.42,23.273,23.273,23.273c12.853,0,23.273-10.42,23.273-23.273V94.973l68.875,68.875 c4.544,4.544,10.501,6.817,16.455,6.817c5.956,0,11.913-2.273,16.457-6.817C390.149,154.759,390.149,140.023,381.06,130.935z"></path> <path style="fill:#ffffffffffffA9A8AE;" d="M488.727,248.242c-12.853,0-23.273,10.42-23.273,23.273v178.424H46.545V271.515 c0-12.853-10.42-23.273-23.273-23.273S0,258.662,0,271.515v201.697c0,12.853,10.42,23.273,23.273,23.273h465.455 c12.853,0,23.273-10.42,23.273-23.273V271.515C512,258.662,501.58,248.242,488.727,248.242z"></path> </g></svg>`;
         
                         contBtnDiv.addEventListener(`click`, () => {
-    
+                            
+                            console.log(`submit button clicked`);
+                            
                             
                             if ( btnClicked === true ) {
                                 
                                 contentSpace.classList.remove(`main`);
                                 quizDiv.classList.add(`no-display`);
                                 let questionNum = 0;
+
+                                // loop to fill the column of results and each div for each question
                                 quizResult.forEach((obj) => {
                                     const eachResultDiv = document.createElement(`div`);
                                     const questionPara = document.createElement(`h6`);
@@ -214,14 +220,16 @@ function populateQuiz (obj) {
                                     eachResultDiv.classList.add(`result-div`);
                                     questionPara.textContent = obj.question;
                                     optionPara.textContent = `Your Answer: ${obj.option} `
-        
-                                    if ( obj.option === results[questionNum].correct_answer.toLowerCase() ) {
+                                    
+                                    console.log(`option: ${obj.option}; answer: ${results[questionNum].correct_answer}`);
+                                    
+                                    if ( obj.option === results[questionNum].correct_answer ) {
                                         optionPara.innerHTML += ` <svg class="checkmark" viewBox="0 -3 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#00973f" stroke="#00973f"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>checkmark</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-518.000000, -1039.000000)" fill="#00973f"> <path d="M548.783,1040.2 C547.188,1038.57 544.603,1038.57 543.008,1040.2 L528.569,1054.92 L524.96,1051.24 C523.365,1049.62 520.779,1049.62 519.185,1051.24 C517.59,1052.87 517.59,1055.51 519.185,1057.13 L525.682,1063.76 C527.277,1065.39 529.862,1065.39 531.457,1063.76 L548.783,1046.09 C550.378,1044.46 550.378,1041.82 548.783,1040.2" id="checkmark" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>`;
                                         eachResultDiv.classList.add(`correct-ans`);
         
                                         quizScore++;
                                     }
-                                    else if ( obj.option !== results[questionNum].correct_answer.toLowerCase() ) {
+                                    else if ( obj.option !== results[questionNum].correct_answer ) {
                                         optionPara.innerHTML += ` <svg class="wrong" fill="#b71c1c" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z"></path></g></svg>`;
                                         eachResultDiv.classList.add(`false-ans`);
                                     }
@@ -255,13 +263,6 @@ function populateQuiz (obj) {
                             } else {
                                 hiddenPara.classList.remove(`no-display`);
                             }
-                            contBtnDiv.addEventListener(`click`, ()=>{
-                                resultPageDiv.classList.add(`no-display`);
-                                textDiv.classList.remove(`no-display`);
-                                figure.classList.remove(`no-display`);
-                                location.reload();
-                                
-                            })
                         })
                     }
                 }
@@ -273,6 +274,18 @@ function populateQuiz (obj) {
         
         
     }))
+    // if ( contBtnDiv.classList.contains(`try-again`) ) {
+        
+    //     contBtnDiv.addEventListener(`click`, ( e ) => {
+    //         console.log(e.target);
+            
+    //         resultPageDiv.classList.add(`no-display`);
+    //         textDiv.classList.remove(`no-display`);
+    //         figure.classList.remove(`no-display`);
+    //     // location.reload();
+    // })
+    // }
+    
     // const beginBtn = document.querySelector(`.begin-btn`);
     // beginBtn.addEventListener(`click`, console.log(`clicked`)
     //  );
